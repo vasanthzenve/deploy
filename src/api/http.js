@@ -1,4 +1,6 @@
-const BASE_URL = 'http://localhost:8080/api'
+import { API_URL } from '../config/api'
+
+const BASE_URL = `${API_URL}/api`
 
 class ApiError extends Error {
   constructor(message, status, details) {
@@ -28,7 +30,7 @@ async function request(path, { method = 'GET', body, auth = true } = {}) {
     })
   } catch {
     throw new ApiError(
-      'Cannot reach the server. Make sure the backend is running on port 8080.',
+      'Cannot reach the server. Please check your connection or try again shortly (the backend may be waking up).',
       0,
     )
   }
